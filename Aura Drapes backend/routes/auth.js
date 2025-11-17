@@ -18,7 +18,9 @@ const sendTokenResponse = (user, statusCode, res) => {
     ),
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'strict'
+    // 🚀 REQUIRED FOR NETLIFY + RENDER
+    secure: true,          // must be true on HTTPS
+    sameSite: 'None',      // allow cross-site cookies via Netlify
   };
 
   res
